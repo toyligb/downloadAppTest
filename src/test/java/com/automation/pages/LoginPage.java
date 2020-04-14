@@ -25,30 +25,25 @@ public class LoginPage extends AbstractPageBase{
     @FindBy(css = "[class='errortext']")
     private WebElement warningMessage;
 
-    public LoginPage()
-    {
+    public LoginPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    public String getWarningMessageText()
-    {
+    public String getWarningMessageText() {
         return warningMessage.getText();
     }
 
-    public void login()
-    {
+    public void login() {
         username.sendKeys(ConfigurationReader.getProperty("hr"));
         password.sendKeys(ConfigurationReader.getProperty("password"), Keys.ENTER);
         BrowserUtils.waitForPageToLoad(10);
         BrowserUtils.wait(3);
     }
 
-    public void login(String usernameValue,String passwordValue)
-    {
+    public void login(String usernameValue,String passwordValue) {
         username.sendKeys(usernameValue);
         password.sendKeys(passwordValue);
         BrowserUtils.wait(3);
     }
-
 
 }

@@ -18,20 +18,17 @@ public abstract class AbstractPageBase {
     @FindBy(css = "#user-name")
     protected WebElement currentUser;
 
-    public AbstractPageBase()
-    {
+    public AbstractPageBase() {
         PageFactory.initElements(driver,this);
     }
 
-    public String getCurrentUserName()
-    {
+    public String getCurrentUserName() {
         BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(currentUser));
         return currentUser.getText().trim();
     }
 
-    public void navigateTo(String tabName)
-    {
+    public void navigateTo(String tabName) {
         String tabNameXpath = "//span[@class ='menu-item-link-text' and contains(text() ,'" + tabName + "')]";
 
         WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));
